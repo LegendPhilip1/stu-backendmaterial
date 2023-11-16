@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNEXT",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    //sequelize-typescript添加设置，主要是关于装饰器的设置
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src/**/*.ts", "modules/user/user.service.ts", "modules/user/user.service.ts", "modules/user/user.model.ts", "modules/user/user.model.ts", "modules/machine-learn/machine-learn.model.ts", "modules/machine-learn/machine-learn.model.ts", "modules/machine-learn/machine-learn.service.ts", "modules/machine-learn/machine-learn.service.ts", "modules/mtrl-base/mtrl-base.service.ts", "modules/mtrl-base/mtrl-base.service.ts", "modules/mtrl-info/mtrl-info.service.ts", "modules/mtrl-info/mtrl-info.service.ts", "modules/mtrl-base/mtrl-base.model.ts", "modules/mtrl-base/mtrl-base.model.ts", "modules/mtrl-info/mtrl-info.model.ts", "modules/mtrl-info/mtrl-info.model.ts", "modules/user/user.login.service.tsin.smodules/user/user.login.service.tsuser/user.login.service.ts", "modules/auth/authorize.ts", "modules/auth/authorize.ts", "modules/auth/refreshToken.ts", "modules/auth/refreshToken.ts", "modules/async-routes/asyncRoutes.ts", "modules/async-routes/asyncRoutes.ts", ],
+  "exclude": [
+    "node_modules",
+    "src/router/api/*.ts",
+    "dist"
+  ]
+}
