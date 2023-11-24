@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS polymer_xjtu;
+CREATE DATABASE IF NOT EXISTS polymer_xjtu;
+USE polymer_xjtu;
 /*
  Navicat Premium Data Transfer
 
@@ -16,6 +19,7 @@
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
 
 -- ----------------------------
 -- Table structure for polymer_info

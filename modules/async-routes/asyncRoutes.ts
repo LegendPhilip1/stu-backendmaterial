@@ -95,7 +95,7 @@ const aboutRouter = {
   meta: {
     title: "关于",
     icon: "ep:eleme-filled",
-    rank: 18,
+    rank: 20,
   },
   children: [
     {
@@ -121,7 +121,7 @@ const searchingRouter = {
     {
       path: "/searching/index",
       name: "Searching",
-      
+
       meta: {
         title: "外部数据库信息",
         roles: ["admin", "common"],
@@ -130,9 +130,27 @@ const searchingRouter = {
   ],
 };
 
+const matlabRouter = {
+  path: "/matlab",
+  meta: {
+    title: "MATLAB软件",
+    icon: "ep:info-filled",
+    rank: 18,
+  },
+  children: [
+    {
+      path: "/matlab/index",
+      name: "Matlab",
+      meta: {
+        title: "MATLAB软件",
+        roles: ["admin", "common"],
+      },
+    },
+  ],
+};
 //获取路由菜单函数
 const getAsyncRoutes = async (req: Request, res: Response) => {
-  authorize(req,res);
+  authorize(req, res);
   res.json({
     success: true,
     data: [
@@ -141,8 +159,10 @@ const getAsyncRoutes = async (req: Request, res: Response) => {
       aboutRouter,
       userRouter,
       searchingRouter,
+      matlabRouter
     ],
   });
+  console.log(permissionRouter, polymerRouter, aboutRouter, userRouter)
 };
 
 export { getAsyncRoutes };

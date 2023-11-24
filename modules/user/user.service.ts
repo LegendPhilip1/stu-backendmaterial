@@ -48,9 +48,18 @@ class UserService {
    * @security JWT
    */
 
+
+  // {
+  // "username":"kingking",
+  // "password":"123456@asdf",
+  // "role":"common",
+  // "phone":"17319678769"
+  // }
+
   addUserData = async (req: Request, res: Response) => {
-    authorize(req, res);
+    // authorize(req, res);
     const { username, password, role, phone } = req.body;
+    console.log(req.body)
     if (password.length < 6)
       return res.json({
         success: false,
@@ -59,6 +68,8 @@ class UserService {
     let userOne = await userRepository.findOne({
       where: { username: username },
     });
+    console.log("finish searching")
+
     if (userOne) {
       res.json({ success: false, data: { message: "用户名重复，添加失败！" } });
     } else {
@@ -71,7 +82,10 @@ class UserService {
           phone: phone,
           time: time,
         })
-        .then(() => res.json({ success: true, data: { message: "添加成功" } }));
+        .then(() => {
+          res.json({ success: true, data: { message: "添加成功" } })
+          console.log("fi")
+        });
     }
   };
 

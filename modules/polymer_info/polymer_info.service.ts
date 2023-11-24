@@ -254,7 +254,7 @@ class PolymerService {
     emptyDir('upload_tmp');
   };
 
-  
+
   uploadPolymerGif = async (req: Request, res: Response) => {
     authorize(req, res);
     const filePathArray = await getFilePath(req, res);

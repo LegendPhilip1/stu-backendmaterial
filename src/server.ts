@@ -23,16 +23,35 @@ import {
 import { login } from "../modules/user/user.login.service";
 import { getAsyncRoutes } from "../modules/async-routes/asyncRoutes";
 import { refreshToken } from "../modules/auth/refreshToken";
-import {userRouter} from '../modules/user/user.router'
-import {polymerRouter} from '../modules/polymer_info/polymer_info.router'
+import { getRoleData } from "../modules/role/role.service"
+import { getRoleIds } from "../modules/role/role.service"
+import { userRouter } from '../modules/user/user.router'
+import { polymerRouter } from '../modules/polymer_info/polymer_info.router'
+import bodyParser from "body-parser";
 
-app.use('/user',userRouter)
-app.use('/polymer-info',polymerRouter)
+app.use('/user', userRouter)
+app.use('/polymer-info', polymerRouter)
 
 
 app.get("/getAsyncRoutes", (req, res) => {
   getAsyncRoutes(req, res);
 });
+
+app.post("/user", (req, res) => {
+  getRoleData(req, res);
+})
+
+app.post("/dept", (req, res) => {
+  getRoleData(req, res);
+})
+
+app.get("/list-all-role", (req, res) => {
+  getRoleData(req, res);
+})
+
+app.post("/list-role-ids", (req, res) => {
+  getRoleIds(req, res);
+})
 
 app.post("/refreshToken", (req, res) => {
   refreshToken(req, res);
@@ -43,6 +62,8 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/register", (req, res) => {
+  // console.log(req.body)
+  // console.log(req.body.data)
   register(req, res);
 });
 

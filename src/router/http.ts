@@ -144,6 +144,8 @@ const login = async (req: Request, res: Response) => {
  */
 
 const register = async (req: Request, res: Response) => {
+  console.log("get data")
+  console.log(req.body)
   // const { username, password, verify } = req.body;
   const { username, password } = req.body;
   // if (generateVerify !== verify)

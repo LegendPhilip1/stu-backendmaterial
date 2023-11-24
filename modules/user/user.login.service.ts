@@ -3,7 +3,7 @@ import * as jwt from "jsonwebtoken";
 import { createHash } from "crypto";
 import { Message } from "../../src/utils/enums";
 import { Request, Response } from "express";
-import { userRepository, UserData } from "./user.service";
+import UserService, { userRepository, UserData } from "./user.service";
 
 /** 过期时间 单位：毫秒 默认 1分钟过期，方便演示 */
 let expiresIn = "7d";
@@ -43,11 +43,17 @@ const login = async (req: Request, res: Response) => {
   //   message: Message[0];
   // }
   // })
+  console.log(req.body)
   const { username, password } = req.body;
   let userOne: UserData = await userRepository.findOne({
     where: { username: username },
   });
+  console.log("JUST")
   if (userOne) {
+    console.log("2")
+    console.log(password)
+    console.log(createHash("md5").update(password).digest("hex"))
+    console.log(userOne.password)
     if (createHash("md5").update(password).digest("hex") == userOne.password) {
       const accessToken = jwt.sign(
         {
@@ -56,7 +62,7 @@ const login = async (req: Request, res: Response) => {
         secret.jwtSecret,
         { expiresIn }
       );
-
+      console.log("here")
       const refreshToken = jwt.sign(
         {
           accountId: userOne.id,
@@ -88,6 +94,7 @@ const login = async (req: Request, res: Response) => {
       });
     }
   } else {
+    console.log("LOSE")
     res.json({
       success: false,
       data: { message: Message[1] },
